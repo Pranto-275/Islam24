@@ -21,6 +21,7 @@
 
     @include('Layout2.menu2')
     @yield('content2')
+
 </div>
 </div>
 <script type="text/javascript" src="{{asset('js2/jquery-3.4.1.min.js')}}"></script>

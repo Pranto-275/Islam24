@@ -16,98 +16,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
+                    @foreach ($VisitorData as $item)
 
                     <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
+                        <td>{{ $item-> id }}</td>
+                        <td>{{ $item-> ip_address }}</td>
+                        <td>{{ $item-> visit_time }}</td>
                     </tr>
 
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
-                    <tr>
-                        <th class="th-sm">01</th>
-                        <th class="th-sm">127.0.0.1</th>
-                        <th class="th-sm">2020-04-14 04:02:06am</th>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 

@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //site
-Route::get('/', function () {
-    return view('Home');
-});
+Route::get('/', 'HomeController@HomeIndex');
+
+
+
 
 
 Route::get('/signup', function () {
@@ -30,26 +31,42 @@ Route::get('/login', function () {
 
 //admin panel
 
-Route::get('/adminpanel', function () {
-    return view('Adminpanel');
-});
-
-
-Route::get('/adminvisitor', function () {
-    return view('AdminVisitor');
-});
+Route::get('/adminpanel', 'adminHomeController@adminHome');
+Route::get('/adminvisitor', 'VisitorController@VisitorIndex');
 
 
 
-Route::get('/adminservice', function () {
-    return view('Adminservice');
-});
+
+
+//admin panel service management
+Route::get('/adminservice', 'ServiceController@ServiceIndex');
+Route::get('/getServiceData', 'ServiceController@getServiceData');
+Route::post('/ServiceDelete', 'ServiceController@ServiceDelete');
+Route::post('/ServiceDetails', 'ServiceController@getServiceDetails');
+Route::post('/ServiceUpdate', 'ServiceController@ServiceUpdate');
+Route::post('/ServiceAdd', 'ServiceController@ServiceAdd');
+
+//admin user management
+
+Route::get('/adminuser', 'adminuserController@adminuserIndex');
+Route::get('/getuserData', 'adminuserController@getuserData');
+Route::post('/userDelete', 'adminuserController@userDelete');
+Route::post('/userDetails', 'adminuserController@getuserDetails');
+Route::post('/userUpdate', 'adminuserController@UserUpdate');
 
 
 
-Route::get('/adminuser', function () {
-    return view('Adminuser');
-});
+//imam user management
+
+Route::get('/adminimam', 'adminimamController@adminimamIndex');
+Route::get('/getimamData', 'adminimamController@getimamData');
+Route::post('/imamDelete', 'adminimamController@imamDelete');
+Route::post('/imamDetails', 'adminimamController@getimamDetails');
+Route::post('/imamUpdate', 'adminimamController@imamUpdate');
+
+
+
+
 
 
 Route::get('/adminimam', function () {
