@@ -39,7 +39,7 @@ class adminimamController extends Controller
         return $result;
     }
 
-    public function userUpdate(Request $request)
+    public function imamUpdate(Request $request)
     {
         $id = $request->input('id');
         $name = $request->input('name');

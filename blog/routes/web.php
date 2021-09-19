@@ -2,92 +2,92 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 //site
 Route::get('/', 'HomeController@HomeIndex');
+Route::post('/contactsend', 'HomeController@Contactsend');
 
 
 
 
 
+
+
+//signup and login
 Route::get('/signup', function () {
     return view('Signup');
 });
 
 
+//login
 
-Route::get('/login', function () {
-    return view('Login');
-});
+Route::get('/loginpage', 'LoginController@LoginIndex');
+Route::post('/onLogin', 'LoginController@onLogin');
+Route::get('/logout', 'LoginController@onLogout');
+
+
 
 //admin panel
 
-Route::get('/adminpanel', 'adminHomeController@adminHome');
-Route::get('/adminvisitor', 'VisitorController@VisitorIndex');
+Route::get('/adminpanel', 'adminHomeController@adminHome')->middleware('adminlogincheck');
+Route::get('/adminvisitor', 'VisitorController@VisitorIndex')->middleware('adminlogincheck');
 
 
 
 
 
 //admin panel service management
-Route::get('/adminservice', 'ServiceController@ServiceIndex');
-Route::get('/getServiceData', 'ServiceController@getServiceData');
-Route::post('/ServiceDelete', 'ServiceController@ServiceDelete');
-Route::post('/ServiceDetails', 'ServiceController@getServiceDetails');
-Route::post('/ServiceUpdate', 'ServiceController@ServiceUpdate');
-Route::post('/ServiceAdd', 'ServiceController@ServiceAdd');
+Route::get('/adminservice', 'ServiceController@ServiceIndex')->middleware('adminlogincheck');
+Route::get('/getServiceData', 'ServiceController@getServiceData')->middleware('adminlogincheck');
+Route::post('/ServiceDelete', 'ServiceController@ServiceDelete')->middleware('adminlogincheck');
+Route::post('/ServiceDetails', 'ServiceController@getServiceDetails')->middleware('adminlogincheck');
+Route::post('/ServiceUpdate', 'ServiceController@ServiceUpdate')->middleware('adminlogincheck');
+Route::post('/ServiceAdd', 'ServiceController@ServiceAdd')->middleware('adminlogincheck');
 
 //admin user management
 
-Route::get('/adminuser', 'adminuserController@adminuserIndex');
-Route::get('/getuserData', 'adminuserController@getuserData');
-Route::post('/userDelete', 'adminuserController@userDelete');
-Route::post('/userDetails', 'adminuserController@getuserDetails');
-Route::post('/userUpdate', 'adminuserController@UserUpdate');
+Route::get('/adminuser', 'adminuserController@adminuserIndex')->middleware('adminlogincheck');
+Route::get('/getuserData', 'adminuserController@getuserData')->middleware('adminlogincheck');
+Route::post('/userDelete', 'adminuserController@userDelete')->middleware('adminlogincheck');
+Route::post('/userDetails', 'adminuserController@getuserDetails')->middleware('adminlogincheck');
+Route::post('/userUpdate', 'adminuserController@UserUpdate')->middleware('adminlogincheck');
 
 
 
-//imam user management
+//admin imam  management
 
-Route::get('/adminimam', 'adminimamController@adminimamIndex');
-Route::get('/getimamData', 'adminimamController@getimamData');
-Route::post('/imamDelete', 'adminimamController@imamDelete');
-Route::post('/imamDetails', 'adminimamController@getimamDetails');
-Route::post('/imamUpdate', 'adminimamController@imamUpdate');
+Route::get('/adminimam', 'adminimamController@adminimamIndex')->middleware('adminlogincheck');
+Route::get('/getimamData', 'adminimamController@getimamData')->middleware('adminlogincheck');
+Route::post('/imamDelete', 'adminimamController@imamDelete')->middleware('adminlogincheck');
+Route::post('/imamDetails', 'adminimamController@imamDetails')->middleware('adminlogincheck');
+Route::post('/imamUpdate', 'adminimamController@imamUpdate')->middleware('adminlogincheck');
 
-
-
-
-
-
-Route::get('/adminimam', function () {
-    return view('Adminimam');
-});
+//contact management
+Route::get('/Contact', 'ContactController@ContactIndex')->middleware('adminlogincheck');
+Route::get('/getContactData', 'ContactController@getContactData')->middleware('adminlogincheck');
+Route::post('/ContactDelete', 'ContactController@ContactDelete')->middleware('adminlogincheck');
 
 
-Route::get('/admincomment', function () {
-    return view('Admincomments');
-});
+
+
+
+//userlogin
+
+Route::get('/userloginpage', 'userLoginController@userLoginIndex');
+Route::post('/useronLogin', 'userLoginController@useronLogin');
+// Route::get('/userlogout', 'userLoginController@useronLogout');
 
 
 //user
-Route::get('/userpanel', function () {
-    return view('Userpanel');
-});
 
 
-Route::get('/userprofile', function () {
-    return view('Userprofile');
-});
+Route::get('/userpanel', 'userHomeController@userHome');
+Route::get('/userprofile', 'userHomeController@userinfo');
+
+
+
+
 
 
 Route::get('/userquestion', function () {

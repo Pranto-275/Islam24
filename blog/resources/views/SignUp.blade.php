@@ -31,6 +31,7 @@
                                     </div>
 
                                     <a href="{{ url('/login') }}" type="submit" class="btn buttonc btn-block">Submit</a>
+                                    <a href="{{ url('/loginpage') }}" type="submit" class="btn btn-primary btn-block">Login</a>
 
                             </form>
                             </div>

@@ -6,4 +6,5 @@
     @include('Component.HomeMap')
     @include('Component.HomeQuiz')
     @include('Component.HomeQuran')
+    @include('Component.HomeContact')
 @endsection

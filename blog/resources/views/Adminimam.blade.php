@@ -179,88 +179,89 @@ function imamDelete(deleteID) {
             toastr.error('Something Went Wrong !');
         })
 }
-//each service update details
-// function SeviceUpdateDetails(detailsID) {
-//     axios.post('/imamDetails', {
-//             id: detailsID
-//         })
-//         .then(function(response) {
-//             if (response.status == 200) {
-//                 $('#serviceEditForm').removeClass('d-none')
-//                 $('#serviceEditLoader').addClass('d-none')
-//                 var jsonData = response.data;
-//                 $('#ImamNameID').val(jsonData[0].name)
-//                 $('#ImamEmailID').val(jsonData[0].email)
-//                 $('#ImamMobID').val(jsonData[0].mobile)
-//                 $('#ImamDetID').val(jsonData[0].Details)
-//                 $('#ImamImgID').val(jsonData[0].img)
+
+//each imam update details
+function SeviceUpdateDetails(detailsID) {
+    axios.post('/imamDetails', {
+            id: detailsID
+        })
+        .then(function(response) {
+            if (response.status == 200) {
+                $('#serviceEditForm').removeClass('d-none')
+                $('#serviceEditLoader').addClass('d-none')
+                var jsonData = response.data;
+                $('#ImamNameID').val(jsonData[0].name)
+                $('#ImamEmailID').val(jsonData[0].email)
+                $('#ImamMobID').val(jsonData[0].mobile)
+                $('#ImamDetID').val(jsonData[0].Details)
+                $('#ImamImgID').val(jsonData[0].img)
 
 
-//             } else {
-//                 $('#serviceEditLoader').addClass('d-none')
-//                 $('#serviceEditWrong').removeClass('d-none')
-//             }
-//         })
-//         .catch(function(error) {
-//             $('#serviceEditLoader').addClass('d-none')
-//             $('#serviceEditWrong').removeClass('d-none')
-//         })
-// }
+            } else {
+                $('#serviceEditLoader').addClass('d-none')
+                $('#serviceEditWrong').removeClass('d-none')
+            }
+        })
+        .catch(function(error) {
+            $('#serviceEditLoader').addClass('d-none')
+            $('#serviceEditWrong').removeClass('d-none')
+        })
+}
 // //service update modal save button
-// $('#serviceEditConfirmBtn').click(function() {
-//     var id = $('#serviceEditID').html();
-//     var name = $('#userNameID').val();
-//     var email = $('#userEmailID').val();
-//     var mob = $('#userMobID').val();
-//     var des = $('#userDetID').val();
-//     var img = $('#userImgID').val();
-//     userUpdate(id, name,email,mob, des, img)
-// });
-// //service update
-// function userUpdate(userID, name,email, mob, des,img) {
-//     $('#serviceEditConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>")
-//     if (name.length == 0) {
-//         toastr.error('Service Name is Empty!');
-//     } else if (des.length == 0) {
-//         toastr.error('Service Description is Empty!');
-//     }else if (email.length == 0) {
-//         toastr.error('Service Description is Empty!');
-//     }else if (mob.length == 0) {
-//         toastr.error('Service Image is Empty!');
-//     }else if (img.length == 0) {
-//         toastr.error('Service Image is Empty!');
-//     } else {
-//         axios.post('/userUpdate', {
-//                 id: userID,
-//                 name: name,
-//                 mobile:mob,
-//                 email:email,
-//                 des: des,
-//                 img: img
-//             })
-//             .then(function(response) {
-//                 $('#serviceEditConfirmBtn').html("Save")
-//                 if (response.status == 200) {
-//                     if (response.data == 1) {
-//                         $('#editModal').modal('hide')
-//                         toastr.success('Update Success');
-//                         getServiceData();
-//                     } else {
-//                         $('#editModal').modal('hide')
-//                         toastr.success('Update failed');
-//                         getServiceData();
-//                     }
-//                 } else {
-//                     $('#editModal').modal('hide')
-//                     toastr.error('Something went Wrong!!');
-//                 }
-//             })
-//             .catch(function(error) {
-//                 $('#editModal').modal('hide')
-//                 toastr.error('Something went Wrong!!');
-//             })
-//     }
-// }
+$('#serviceEditConfirmBtn').click(function() {
+    var id = $('#serviceEditID').html();
+    var name = $('#ImamNameID').val();
+    var email = $('#ImamEmailID').val();
+    var mob = $('#ImamMobID').val();
+    var des = $('#ImamDetID').val();
+    var img = $('#ImamImgID').val();
+    userUpdate(id, name,email,mob, des, img)
+});
+//imam update
+function userUpdate(userID, name,email, mob, des,img) {
+    $('#serviceEditConfirmBtn').html("<div class='spinner-border spinner-border-sm' role='status'></div>")
+    if (name.length == 0) {
+        toastr.error('Service Name is Empty!');
+    } else if (des.length == 0) {
+        toastr.error('Service Description is Empty!');
+    }else if (email.length == 0) {
+        toastr.error('Service Description is Empty!');
+    }else if (mob.length == 0) {
+        toastr.error('Service Image is Empty!');
+    }else if (img.length == 0) {
+        toastr.error('Service Image is Empty!');
+    } else {
+        axios.post('/imamUpdate', {
+                id: userID,
+                name: name,
+                mobile:mob,
+                email:email,
+                des: des,
+                img: img
+            })
+            .then(function(response) {
+                $('#serviceEditConfirmBtn').html("Save")
+                if (response.status == 200) {
+                    if (response.data == 1) {
+                        $('#editModal').modal('hide')
+                        toastr.success('Update Success');
+                        getadminuserData();
+                    } else {
+                        $('#editModal').modal('hide')
+                        toastr.success('Update failed');
+                        getadminuserData();
+                    }
+                } else {
+                    $('#editModal').modal('hide')
+                    toastr.error('Something went Wrong!!');
+                }
+            })
+            .catch(function(error) {
+                $('#editModal').modal('hide')
+                toastr.error('Something went Wrong!!');
+            })
+    }
+}
 
 </script>
 

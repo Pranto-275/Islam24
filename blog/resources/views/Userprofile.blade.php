@@ -9,7 +9,13 @@
             <div class="card  py-4">
                 <div> <img class="py-3" src="image/imam.png" alt="" style="width: 100px;height: auto;"></div>
                 <div class="card-body">
-                    <h5 class="card-title">Aiqur Rahman</h5>
+                    <h5 class="card-title">
+                        @foreach ($users as $user)
+                            <tr>
+                             <td>{{ $user->name }}</td>
+                            </tr>
+                            @endforeach
+                    </h5>
                     <p class="card-text">user</p>
                 </div>
                 <span> <i class="far fa-envelope"></i></span>
@@ -39,9 +45,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="my" class="container tab-pane "><br>
-                            <h5>Software Engineer</h5>
-                            <h5>Greenland IT sector</h5>
-                            <h5>HSC Batch 2017</h5>
+
 
                         </div>
                         <div id="my2" class="container tab-pane fade"><br>

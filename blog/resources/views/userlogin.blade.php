@@ -18,7 +18,6 @@
                    <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
             </form>
-            <a href="{{ url('/userloginpage') }}" type="submit" name="submit" class="btn btn-primary btn-block">UserLogin</a>
 
         </div>
     </div>
@@ -34,22 +33,25 @@
     var userName =formdata[0]['value']
     var password = formdata[1]['value']
 
-    var url = '/onLogin'
+    var url = '/useronLogin'
     axios.post(url, {
         user: userName,
         pass: password
     })
     .then(function (response) {
         if (response.status ==200 && response.data==1){
-            window.location.href="/adminpanel"
+            window.location.href="/userpanel"
         }else{
-            alert(userName)
-            toastr.error('User Not found! try again');
+            alert('User Not found! try again')
+
         }
     })
     .catch(function (error) {
-        toastr.error('User Not found! try again');
+        alert('User Not found! try again')
+
     })
+
+
 })
 
 </script>

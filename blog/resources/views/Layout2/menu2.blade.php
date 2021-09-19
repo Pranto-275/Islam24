@@ -8,7 +8,7 @@
                  <li class="nav-item mt-3">ADMIN</li>
                 </ul>
                 <ul class="navbar-nav my-lg-0">
-                    <li class="nav-item"><a href="{{url('/login')}}" class="btn btn-sm btn-danger">Logout</a></li>
+                    <li class="nav-item"><a href="{{url('/logout')}}" class="btn btn-sm btn-danger">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -23,7 +23,7 @@
                     <li> <a href="{{ url('/adminservice') }}"><span> <i class="fas fa-globe"></i> </span><span class="hide-menu">Services</span></a></li>
                     <li> <a href="{{ url('/adminuser') }}"><span> <i class="fas fa-book-open"></i> </span><span class="hide-menu">Users</span></a></li>
                     <li> <a href="{{ url('/adminimam') }}"><span> <i class="fas fa-code"></i></i> </span><span class="hide-menu">Imam</span></a></li>
-                    <li> <a href="{{ url('/admincomment') }}"><span> <i class="far fa-envelope"></i> </span><span class="hide-menu">Comments</span></a></li>
+                    <li> <a href="{{ url('/Contact') }}"><span> <i class="far fa-envelope"></i> </span><span class="hide-menu">Comments</span></a></li>
 
                 </ul>
             </nav>
