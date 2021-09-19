@@ -8,7 +8,7 @@
                  <li class="nav-item mt-3">User</li>
                 </ul>
                 <ul class="navbar-nav my-lg-0">
-                    <li class="nav-item"><a href="{{url('/login')}}" class="btn btn-sm btn-danger">Logout</a></li>
+                    <li class="nav-item"><a href="{{url('/userlogout')}}" class="btn btn-sm btn-danger">Logout</a></li>
                 </ul>
             </div>
         </nav>

@@ -1,47 +1,42 @@
 @extends('Layout.app')
 
 @section('content')
-<section id="home">
-    <div class="home-inner">
-        <div class="container">
-            <div class="row align-item-center  justify-content-center ">
-                <div class="col-12 col-md-7 col-lg-5">
-                    <div class="login">
-                        <div class="login-form">
-                            <h1 class="display-4 text-center"><b>Stay Connect</b></h1>
-                            <form action="" class="was-validated">
+
+<div class="container" style="margin-top: 100px">
+    <div class="row justify-content-center d-flex mt-5 mb-5 ">
+        <div class="col-md-6 card">
+           <form action="" class="was-validated">
                                 <div class="form-group">
-                                    <label for="username" class="pt-2"><b><i class="fas fa-user-cog"></i> Username/Email</b></label>
-                                    <input type="text" id="username" placeholder="Username" class="form-control" required>
+                                    <label for="username" class="pt-2"><b><i class="fas fa-user-cog"></i> Name</b></label>
+                                    <input type="text" id="usernameid" placeholder="Name" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="eail" class="pt-2"><b><i class="fas fa-user-cog"></i>Email</b></label>
-                                    <input type="email" id="email" placeholder="Email" class="form-control" required>
+                                    <input type="text" id="emailid" placeholder="Email" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="pwd" class="pt-2"><b><i class="fas fa-key"></i> Password</b></label>
-                                    <input type="password" id="pwd" placeholder="Password" class="form-control" required>
+                                    <label for="pwd" class="pt-2"><b><i class="fas fa-key"></i> Mobile</b></label>
+                                    <input type="text" id="mobileid" placeholder="Mobile" class="form-control" required>
                                 </div>
-                                <div class="form-group">
 
-                                    <div class="form-group">
-                                        <label for="repwd" class="pt-2"><b><i class="fas fa-key"></i>Re-Password</b></label>
-                                        <input type="password" id="repwd" placeholder="Password" class="form-control" required>
+                                <div class="form-group">
+                                        <label for="userId" class="pt-2"><b><i class="fas fa-key"></i>UserId</b></label>
+                                        <input type="text" id="userid" placeholder="Unique UserId" class="form-control" required>
                                     </div>
 
-                                    <a href="{{ url('/login') }}" type="submit" class="btn buttonc btn-block">Submit</a>
+                                    <div class="form-group">
+                                        <label for="repwd" class="pt-2"><b><i class="fas fa-key"></i>Password</b></label>
+                                        <input type="password" id="passwordid" placeholder="Password" class="form-control" required>
+                                    </div>
+
+                                    <button id="regSendBtnId"  type="submit" class="btn btn-success btn-block">Submit</button>
                                     <a href="{{ url('/loginpage') }}" type="submit" class="btn btn-primary btn-block">Login</a>
-
                             </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
-</section>
+    </div>
+</div>
+
+
 
 @endsection

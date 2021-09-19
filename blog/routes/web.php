@@ -76,14 +76,19 @@ Route::post('/ContactDelete', 'ContactController@ContactDelete')->middleware('ad
 
 Route::get('/userloginpage', 'userLoginController@userLoginIndex');
 Route::post('/useronLogin', 'userLoginController@useronLogin');
-// Route::get('/userlogout', 'userLoginController@useronLogout');
+Route::get('/userlogout', 'userLoginController@useronLogout');
+
+
+
+//userreg
+Route::post('/reguser', 'userregController@Contactsend');
 
 
 //user
 
 
-Route::get('/userpanel', 'userHomeController@userHome');
-Route::get('/userprofile', 'userHomeController@userinfo');
+Route::get('/userpanel', 'userHomeController@userHome')->middleware('userlogincheck');
+Route::get('/userprofile', 'userHomeController@userinfo')->middleware('userlogincheck');
 
 
 
@@ -92,32 +97,43 @@ Route::get('/userprofile', 'userHomeController@userinfo');
 
 Route::get('/userquestion', function () {
     return view('Userquestion');
-});
+})->middleware('userlogincheck');
 
 Route::get('/useranswers', function () {
     return view('Useranswers');
-});
+})->middleware('userlogincheck');
 
 Route::get('/usercimam', function () {
     return view('UserCimam');
-});
+})->middleware('userlogincheck');
 
+
+
+
+
+
+
+//imamlogin
+
+Route::get('/imamloginpage', 'imamLoginController@imamLoginIndex');
+Route::post('/imamonLogin', 'imamLoginController@imamonLogin');
+Route::get('/imamlogout', 'imamLoginController@imamonLogout');
 
 //imam
 Route::get('/imampanel', function () {
     return view('Imampanel');
-});
+})->middleware('imamlogincheck');
 
 
 Route::get('/imamprofile', function () {
     return view('Imamprofile');
-});
+})->middleware('imamlogincheck');
 
 
 Route::get('/imamqn', function () {
     return view('Imamqn');
-});
+})->middleware('imamlogincheck');
 
 Route::get('/onlineclass', function () {
     return view('Imamclass');
-});
+})->middleware('imamlogincheck');

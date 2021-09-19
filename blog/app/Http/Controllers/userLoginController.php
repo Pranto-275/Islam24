@@ -22,7 +22,7 @@ class userLoginController extends Controller
         $countValue = adminuserModel::where('userId', '=', $user)->where('password', '=', $pass)->count();
         if ($countValue == 1) {
 
-            // $request->session()->put('user', $user);
+            $request->session()->put('normaluser', $user);
 
             return 1;
         } else {
@@ -31,10 +31,10 @@ class userLoginController extends Controller
     }
 
 
-    // //onlogout
-    // public function useronLogout(Request $request)
-    // {
-    //     $request->session()->flush();
-    //     return redirect('/userloginpage');
-    // }
+    //onlogout
+    public function useronLogout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect('/userloginpage');
+    }
 }
