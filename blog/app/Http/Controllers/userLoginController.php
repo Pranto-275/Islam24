@@ -30,6 +30,13 @@ class userLoginController extends Controller
         }
     }
 
+    public function userinfo(Request $request)
+    {
+        $user = $request->session()->get('normaluser');
+        $result = json_encode(adminuserModel::where('userId', '=', $user)->get());
+        return $result;
+    }
+
 
     //onlogout
     public function useronLogout(Request $request)

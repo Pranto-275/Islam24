@@ -16,6 +16,7 @@
                 </div>
                 <div class="form-group">
                    <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+                   <a href="{{ url('/userloginpage') }}" type="submit" name="submit" class="btn btn-success btn-block">UserLogin</a>
                 </div>
             </form>
 

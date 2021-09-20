@@ -1,5 +1,9 @@
 @extends('Layout4.app')
 
+@section('imamname')
+    <div id="imaminfo"></div>
+@endsection
+
 @section('content4')
 
 
@@ -10,12 +14,13 @@
             <div class="card  py-4">
                 <div> <img class="py-3" src="image/imam.png" alt="" style="width: 100px;height: auto;"></div>
                 <div class="card-body">
-                    <h5 class="card-title">Aiqur Rahman</h5>
-                    <p class="card-text">user</p>
+                    <h5 class="card-title">IMAM</h5>
+                    <p class="card-text">
+
+                        <div id="imaminfo2"></div>
+                    </p>
                 </div>
-                <span> <i class="far fa-envelope"></i></span>
-                <span> <i class="far fa-envelope"></i></span>
-                <span> <i class="far fa-envelope"></i></span>
+
             </div>
 
         </div>
@@ -40,10 +45,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="my" class="container tab-pane "><br>
-                            <h5>Software Engineer</h5>
-                            <h5>Greenland IT sector</h5>
-                            <h5>HSC Batch 2017</h5>
-
+                            <div id="imaminfo3"></div>
                         </div>
                         <div id="my2" class="container tab-pane fade"><br>
                             <ol type="1">
@@ -84,6 +86,54 @@
 </div>
 
 
+
+@endsection
+
+
+@section('script')
+
+
+    <script>
+
+        //title
+       axios.get('get')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('imaminfo').innerHTML += '<h6>' + x.name + '</h6>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+
+
+
+       axios.get('get')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('imaminfo2').innerHTML +=
+                        'Name:<h4>' + x.name +'</h4>'+
+                            'UserId:<h4>'+x.imamid+'</h4>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+
+
+       axios.get('get')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('imaminfo3').innerHTML +=
+                'Mobile:<span><h6>'+x.mobile+'</h6></span>'+
+                    'Email:<span><h6>'+x.email+'</h6></span>'+
+                        'Details:<span><h6>'+x.Details+'</h6></span>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+    </script>
 
 @endsection
 

@@ -1,5 +1,8 @@
 @extends('Layout4.app')
 
+@section('imamname')
+    <div id="imaminfo"></div>
+@endsection
 @section('content4')
 
 
@@ -32,3 +35,19 @@
 
 @endsection
 
+
+@section('script')
+<script>
+      //title
+      axios.get('get')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('imaminfo').innerHTML += '<h6>' + x.name + '</h6>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+
+</script>
+@endsection

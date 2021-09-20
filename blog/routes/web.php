@@ -88,7 +88,10 @@ Route::post('/reguser', 'userregController@regUser');
 
 
 Route::get('/userpanel', 'userHomeController@userHome')->middleware('userlogincheck');
+
 Route::get('/userprofile', 'userHomeController@userinfo')->middleware('userlogincheck');
+Route::get('/getuserinfo', 'userLoginController@userinfo');
+
 
 
 Route::get('/getuserData', 'UserQuestionController@getuserquestionData');
@@ -133,9 +136,13 @@ Route::get('/imampanel', function () {
 })->middleware('imamlogincheck');
 
 
+
+//imam profile
 Route::get('/imamprofile', function () {
     return view('Imamprofile');
 })->middleware('imamlogincheck');
+Route::get('/get', 'imamLoginController@imaminfo');
+
 
 
 Route::get('/imamqn', function () {
@@ -144,9 +151,9 @@ Route::get('/imamqn', function () {
 
 
 //imam question answer
-Route::get('/getqnData', 'imamQAController@getQAData');
-Route::post('/qnDelete', 'imamQAController@qnDelete');
-Route::post('/qnUpdate', 'imamQAController@qnUpdate');
+Route::get('/getqnData', 'imamQAController@getQAData')->middleware('imamlogincheck');
+Route::post('/qnDelete', 'imamQAController@qnDelete')->middleware('imamlogincheck');
+Route::post('/qnUpdate', 'imamQAController@qnUpdate')->middleware('imamlogincheck');
 
 
 Route::get('/onlineclass', function () {

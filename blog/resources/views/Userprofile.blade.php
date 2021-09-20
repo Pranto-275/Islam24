@@ -1,5 +1,9 @@
 @extends('Layout3.app')
 
+
+@section('username')
+    <div id="userinfo1"></div>
+@endsection
 @section('content3')
 
 <div class="container py-5">
@@ -10,17 +14,13 @@
                 <div> <img class="py-3" src="image/imam.png" alt="" style="width: 100px;height: auto;"></div>
                 <div class="card-body">
                     <h5 class="card-title">
-                        @foreach ($users as $user)
-                            <tr>
-                             <td>{{ $user->name }}</td>
-                            </tr>
-                            @endforeach
+
                     </h5>
-                    <p class="card-text">user</p>
+                    <p class="card-text">
+                        <div id="userinfo2"></div>
+                    </p>
                 </div>
-                <span> <i class="far fa-envelope"></i></span>
-                <span> <i class="far fa-envelope"></i></span>
-                <span> <i class="far fa-envelope"></i></span>
+
             </div>
 
         </div>
@@ -45,7 +45,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="my" class="container tab-pane "><br>
-
+                            <div id="imaminfo3"></div>
 
                         </div>
                         <div id="my2" class="container tab-pane fade"><br>
@@ -86,6 +86,54 @@
     </div>
 </div>
 
+
+@endsection
+
+
+@section('script')
+
+
+    <script>
+
+        //title
+       axios.get('/getuserinfo')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('userinfo1').innerHTML += '<h6>' + x.name + '</h6>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+
+
+
+       axios.get('/getuserinfo')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('userinfo2').innerHTML +=
+                        'Name:<h4>' + x.name +'</h4>'+
+                            'UserId:<h4>'+x.userId+'</h4>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+
+
+       axios.get('/getuserinfo')
+       .then(function (response) {
+           response.data.forEach(x=>{
+            document.getElementById('imaminfo3').innerHTML +=
+                'Mobile:<span><h6>'+x.mobile+'</h6></span>'+
+                    'Email:<span><h6>'+x.email+'</h6></span>'+
+                        'Details:<span><h6>'+x.des+'</h6></span>';
+           });
+       })
+       .catch(function (error) {
+           console.log(error)
+       })
+    </script>
 
 @endsection
 

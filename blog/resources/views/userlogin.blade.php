@@ -16,6 +16,7 @@
                 </div>
                 <div class="form-group">
                    <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
+                   <a href="{{ url('/imamloginpage') }}" type="submit" name="submit" class="btn btn-success btn-block">ImamLogin</a>
                 </div>
             </form>
 

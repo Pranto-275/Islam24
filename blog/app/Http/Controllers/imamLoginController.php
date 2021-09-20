@@ -31,6 +31,14 @@ class imamLoginController extends Controller
     }
 
 
+    public function imaminfo(Request $request)
+    {
+        $imamuser = $request->session()->get('imamuser');
+        $result = json_encode(adminimamModel::where('imamid', '=', $imamuser)->get());
+        return $result;
+    }
+
+
     public function imamonLogout(Request $request)
     {
         $request->session()->flush();
