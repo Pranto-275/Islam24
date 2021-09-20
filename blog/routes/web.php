@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 //site
 Route::get('/', 'HomeController@HomeIndex');
 Route::post('/contactsend', 'HomeController@Contactsend');
+Route::get('/getquestionData', 'HomeController@getquestionData');
 
 
 
@@ -91,6 +92,8 @@ Route::get('/userprofile', 'userHomeController@userinfo')->middleware('userlogin
 
 
 Route::get('/getuserData', 'UserQuestionController@getuserquestionData');
+Route::post('/questionsend', 'UserQuestionController@questionsend');
+
 
 
 

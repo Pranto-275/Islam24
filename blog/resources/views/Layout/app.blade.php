@@ -15,7 +15,8 @@
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" >
      <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" >
-
+     <link rel="stylesheet" href="css/datatables.min.css">
+     <link rel="stylesheet" href="css/datatables-select.min.css">
 
 
 
@@ -35,6 +36,8 @@
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/axios.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js2/datatables.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js2/datatables-select.min.js')}}"></script>
     @yield('script')
 
 </body>

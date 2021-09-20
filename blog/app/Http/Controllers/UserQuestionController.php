@@ -12,4 +12,26 @@ class UserQuestionController extends Controller
         $result = json_encode(userQuestionModel::orderBy('id', 'desc')->get());
         return $result;
     }
+
+
+    public function questionsend(Request $request)
+    {
+        $name = $request->input('name');
+        $category = $request->input('category');
+        $question = $request->input('question');
+
+
+
+        $result =  userQuestionModel::insert([
+            'name' => $name,
+            'catagory' => $category,
+            'question' => $question,
+        ]);
+
+        if ($result == true) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }

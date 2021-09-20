@@ -10,14 +10,15 @@
                    Ask Question
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form action="" >
+                        {{ csrf_field() }}
                         <label for="name">User Name</label>
-                        <input type="text" class="form-control">
+                        <input id="usernameid" type="text" class="form-control">
                         <label for="name">Salah,Siyam,Zakah,Haz,Masalah</label>
-                        <input type="text" class="form-control">
+                        <input id="catagoryid" type="text" class="form-control">
                         <label for="name">Question</label>
-                        <input type="email" class="form-control">
-                        <a href="question.html" class="btn btn-primary btn-sm">Submit</a>
+                        <input id="questionid" type="text" class="form-control">
+                        <button id="questionSendBtnId" type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </form>
                 </div>
             </div>
@@ -128,7 +129,94 @@ function getServiceData() {
             $('#loaderDiv').addClass('d-none');
             $('#WrongDiv').removeClass('d-none');
         })
+
 }
+
+
+
+//question
+$('#questionSendBtnId').click(function() {
+
+    var name = $('#usernameid').val()
+    var category = $('#catagoryid').val()
+    var question = $('#questionid').val()
+    questionSend(name, category, question)
+
+});
+
+
+function questionSend(name, category, question) {
+
+if (name.length == 0) {
+    $('#questionSendBtnId').html("Enter your name!");
+
+    setTimeout(function() {
+        $('#questionSendBtnId').html("Send");
+    }, 2000);
+
+} else if (category.length == 0) {
+    $('#questionSendBtnId').html("Enter your category!");
+    setTimeout(function() {
+        $('#questionSendBtnId').html("Send");
+    }, 2000);
+
+} else if (question.length == 0) {
+    $('#questionSendBtnId').html("Enter your question!");
+    setTimeout(function() {
+        $('#questionSendBtnId').html("Send");
+    }, 2000);
+
+} else {
+    $('#questionSendBtnId').html("Sending Info...");
+    axios.post('/questionsend', {
+
+        name: name,
+        category: category,
+        question: question,
+
+        })
+        .then(function(response) {
+            if (response.status == 200) {
+                if (response.data == 1) {
+                    $('#questionSendBtnId').html("Successfully Done");
+                    setTimeout(function() {
+                        $('#questionSendBtnId').html("Send");
+                    }, 2000);
+                } else {
+                    $('#questionSendBtnId').html("Failed, Try again");
+                    setTimeout(function() {
+                        $('#questionSendBtnId').html("Send");
+                    }, 2000);
+
+                }
+            } else {
+                $('#questionSendBtnId').html("Failed, Try again");
+                setTimeout(function() {
+                    $('#questionSendBtnId').html("Send");
+                }, 2000);
+
+
+            }
+        })
+        .catch(function(error) {
+            $('#contactSendBtnId').html("Try Again");
+            setTimeout(function() {
+                $('#contactSendBtnId').html("Send");
+            }, 2000);
+            alert("Not save")
+        })
+}
+
+
+
+
+
+}
+
+
+
+
+
 </script>
 
 @endsection
