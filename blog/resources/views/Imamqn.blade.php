@@ -10,133 +10,96 @@
                     Questions
                 </div>
                 <div class="card-body">
-                    <table id="VisitorDt" class="table table-striped table-sm table-bordered" cellspacing="0" width="100%">
+                    <table id="serviceDataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
-                            <tr>
-                                <th class="th-sm">UserName</th>
-                                <th class="th-sm">Catagory</th>
-                                <th class="th-sm">Question?</th>
-                                <th class="th-sm">Show Answer</th>
-                                <th class="th-sm">Edit Anser</th>
-                                <th class="th-sm">Push Answer</th>
-                            </tr>
+                          <tr>
+                            <th class="th-sm">UserName</th>
+                            <th class="th-sm">Catagory</th>
+                            <th class="th-sm">Question</th>
+                            <th class="th-sm">Answer</th>
+                            <th class="th-sm">Edit</th>
+                            <th class="th-sm">Delete</th>
+                          </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th class="th-sm">Atiqur</th>
-                                <th class="th-sm">Zakah</th>
-                                <th class="th-sm">Amount Of Zakah</th>
-                                <th class="th-sm"><button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#myModal2">Details</button></th>
-                                <th class="th-sm"><button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal3">Edit</button></th>
-                                <th class="th-sm">
-                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-                                       Push Answer
-                                      </button>
-                                </th>
-                            </tr>
-
+                        <tbody id="service_table">
 
                         </tbody>
-                    </table>
+                      </table>
+
+                </div>
+                </div>
+                </div>
+
+                <div id="loaderDiv" class="container">
+                    <div class="row">
+                        <div class="col-md-12 p-5 text-center">
+                            <img class="loading-icon m-5" src="{{ asset('images/loader.svg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="WrongDiv" class="container d-none">
+                    <div class="row">
+                        <div class="col-md-12 p-5 text-center">
+                            <h3>Something Went Wrong!!!!</h3>
+                        </div>
+                    </div>
+                </div>
+
 
                 </div>
             </div>
-        </div>
-        <!-- change password -->
-
-
-
-    </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Question: Amount of Zakah?
-                </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form action="">
-                    <textarea name="answer" id="answer" cols="50" rows="10">
-                        Answer: It is customarily 2.5% (or 1⁄40) of a Muslim's total savings and wealth above a minimum amount known as nisab, but Islamic scholars differ on how much nisab is and other aspects of zakat.
-                    </textarea>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="myModal2">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Question: Amount of Zakah?
-                </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-
-
-                <h6>Answer: It is customarily 2.5% (or 1⁄40) of a Muslim's total savings and wealth above a minimum amount known as nisab, but Islamic scholars differ on how much nisab is and other aspects of zakat.
-                </h6>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="myModal3">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Question: Amount of Zakah?
-                </h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-
-                <form action="">
-                    <textarea name="editusername" id="editusername" cols="50" rows="10">
-                       Answer: It is customarily 2.5%  of a Muslim's total savings and wealth above a minimum amount known as nisab, but Islamic scholars differ on how much nisab is and other aspects of zakat.
-
-                    </textarea>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </form>
-
-
-            </div>
-
-        </div>
-    </div>
-</div>
 
 
 @endsection
 
+@section('script')
+<script>
+
+getServiceData();
+//for services table
+function getServiceData() {
+    axios.get('/getServiceData')
+        .then(function(response) {
+            if (response.status == 200) {
+                $('#mainDiv').removeClass('d-none');
+                $('#loaderDiv').addClass('d-none');
+                $('#serviceDataTable').DataTable().destroy();
+                $('#service_table').empty();
+                var jsonData = response.data;
+                $.each(jsonData, function(i, item) {
+                    $('<tr>').html(
+                        "<td><img class='table-img' src=" + jsonData[i].service_img + "></td>" +
+                        "<td>" + jsonData[i].service_name + "</td>" +
+                        "<td>" + jsonData[i].service_des + "</td>" +
+                        "<td><a  class='serviceEditBtn' data-id=" + jsonData[i].id + "><i class='fas fa-edit'></i></a></td>" +
+                        "<td><a data-toggle='modal' data-target='#deleteModal'  class='serviceDeleteBtn'  data-id=" + jsonData[i].id + " ><i class='fas fa-trash-alt'></i></a></td>"
+                    ).appendTo('#service_table');
+                });
+                //services table delete iconclick
+                $('.serviceDeleteBtn').click(function() {
+                    var id = $(this).data('id')
+                    $('#serviceDeleteID').html(id);
+                });
+                //service table edit iconclick
+                $('.serviceEditBtn').click(function() {
+                    var id = $(this).data('id')
+                    $('#serviceEditID').html(id);
+                    SeviceUpdateDetails(id)
+                    $('#editModal').modal('show')
+                });
+                $('#serviceDataTable').DataTable({"order":false});
+                $('.dataTables_length').addClass('bs-select');
+            } else {
+                $('#loaderDiv').addClass('d-none');
+                $('#WrongDiv').removeClass('d-none');
+            }
+        })
+        .catch(function(error) {
+            $('#loaderDiv').addClass('d-none');
+            $('#WrongDiv').removeClass('d-none');
+        })
+}
+
+</script>
+@endsection

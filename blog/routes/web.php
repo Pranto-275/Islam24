@@ -142,6 +142,11 @@ Route::get('/imamqn', function () {
     return view('Imamqn');
 })->middleware('imamlogincheck');
 
+Route::get('/getqnData', 'imamQAController@getQAData');
+
+
+
+
 Route::get('/onlineclass', function () {
     return view('Imamclass');
 })->middleware('imamlogincheck');
