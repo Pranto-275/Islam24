@@ -14,5 +14,9 @@
             </div>
         </div>
         @endforeach
+
+        @foreach ($username as $item)
+            {{ $item }}
+        @endforeach
     </div>
 </div>

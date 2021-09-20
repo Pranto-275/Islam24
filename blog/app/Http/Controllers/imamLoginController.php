@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\adminimamModel;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class imamLoginController extends Controller
 
         $countValue = adminimamModel::where('imamid', '=', $user)->where('password', '=', $pass)->count();
         if ($countValue == 1) {
+
 
             $request->session()->put('imamuser', $user);
 
