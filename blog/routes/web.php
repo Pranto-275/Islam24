@@ -81,8 +81,7 @@ Route::get('/userlogout', 'userLoginController@useronLogout');
 
 
 //userreg
-Route::post('/reguser', 'userregController@Contactsend');
-
+Route::post('/reguser', 'userregController@regUser');
 
 //user
 
@@ -91,6 +90,7 @@ Route::get('/userpanel', 'userHomeController@userHome')->middleware('userloginch
 Route::get('/userprofile', 'userHomeController@userinfo')->middleware('userlogincheck');
 
 
+Route::get('/getuserData', 'UserQuestionController@getuserquestionData');
 
 
 
@@ -111,7 +111,12 @@ Route::get('/usercimam', function () {
 
 
 
+//imam reg
+Route::get('/imamregpage', function () {
+    return view('imamreg');
+});
 
+Route::post('/regimam', 'userregController@regImam');
 
 //imamlogin
 

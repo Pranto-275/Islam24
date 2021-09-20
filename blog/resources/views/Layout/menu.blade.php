@@ -10,7 +10,7 @@
     <!-- sidebar end -->
 
 
-    <a class="navbar-brand" href="#"><img class="nav-logo" src="image/Logo2.png"></a>
+    <a href="{{ url('/') }}" class="navbar-brand" href="#"><img class="nav-logo" src="image/Logo2.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynavbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
